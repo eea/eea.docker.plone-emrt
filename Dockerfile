@@ -28,7 +28,10 @@ ENV WARMUP_BIN=/plone/instance/bin/warmup \
 COPY buildout.cfg /plone/instance/
 COPY warmup.ini /plone/instance/
 
-
-RUN virtualenv venv && HOME=/plone/ venv/bin/pip install zc.buildout==2.13.7 setuptools==38.7 wheel==0.37.1
+# 2024 fixes - fix SSL certificate errors
+RUN curl -Ok https://curl.se/ca/cacert.pem \
+  && mv cacert.pem /etc/ssl/certs/ca-certificates.crt \
+  && virtualenv venv \
+  && HOME=/plone/ venv/bin/pip install setuptools==38.7.0 zc.buildout==2.13.7 wheel==0.37.1
 
 RUN ./venv/bin/buildout
