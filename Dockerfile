@@ -1,5 +1,5 @@
 FROM eeacms/kgs:18.1.23
-MAINTAINER "EEA: IDM2 B-Team"
+LABEL maintainer="EEA: IDM2 B-Team <eea-edw-b-team-alerts@googlegroups.com>"
 
 # 2024 fixes
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 112695A0E562B32A \
