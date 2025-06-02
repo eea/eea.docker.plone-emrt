@@ -5,7 +5,7 @@ LABEL maintainer="EEA: IDM2 B-Team <eea-edw-b-team-alerts@googlegroups.com>"
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 112695A0E562B32A \
  && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys EF0F382A1A7B6500
 
-RUN echo "deb http://archive.debian.org/debian stretch main\ndeb http://archive.debian.org/debian-security stretch/updates main" > /etc/apt/sources.list \
+RUN echo "deb [trusted=yes] http://archive.debian.org/debian stretch main\ndeb [trusted=yes] http://archive.debian.org/debian-security stretch/updates main" > /etc/apt/sources.list \
  && apt-get update \
  && apt-key update \
  && apt-get install -y --no-install-recommends build-essential \
